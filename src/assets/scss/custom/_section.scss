@@ -78,6 +78,10 @@
             transform: skew(4deg);
         }
     }
+   
+   
+    
+    
 
     // Color variations
     .shape-primary {
@@ -412,6 +416,23 @@
     }
 
 }
+
+@media only screen and (max-width: 800px){
+    .section-login{
+     
+      background-image: none !important;
+     
+    }
+}
+.section-login{
+     
+        background-image: url("../../img/login_bg.svg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+     
+    }
+
 
 // Device illustrations used on shape sections
 .device-ill {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginUser } from '../actions/authActions'
 import { Link } from 'react-router-dom';
-
+import Background from '../assets/img/login_bg.svg';
 
 
 class Login extends Component {
@@ -51,8 +51,8 @@ class Login extends Component {
             <>
                 <Navbar1 />
 
-                <div className='position-relative'>
-                    <section className="section section-lg section-shaped" style={{ height: '100vh' }}>
+                <div className='position-relative '>
+                    <section className="section section-lg section-shaped section-login" >
                         <div className="shape shape-style-1 shape-default">
 
                         </div>

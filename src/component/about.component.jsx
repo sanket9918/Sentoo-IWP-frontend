@@ -22,9 +22,9 @@ class About extends Component{
 
                                         />
                                         <br />
-                                        <h2>
+                                        <h4>
                                             Live with a style
-                                        </h2>
+                                        </h4>
                                     </Col>
                                    
                                 </Row>
