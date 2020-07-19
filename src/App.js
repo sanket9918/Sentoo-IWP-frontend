@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Hero from './component/main-header.component';
+import Register from './component/register.component';
+
+import Login from './component/login.component';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar1 from './component/navbar.component';
+import { Provider } from 'react-redux';
+import store from './store';
+import Dashboard from './component/dashboard.component';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={store}>
+
+        <BrowserRouter>
+          <div>
+            <Navbar1 />
+            <Switch>
+              <Route path='/' exact component={Hero} />
+              <Route path='/login' exact component={Login} />
+              <Route path='/register' exact component={Register} />
+              <Route path='/dashboard' exact component={Dashboard} />
+
+            </Switch>
+
+          </div>
+        </BrowserRouter>
+      </Provider>
+
+
+    </>
   );
 }
 

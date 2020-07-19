@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6815.93 3387.43">
+    <defs>
+        <style> @import url('https://fonts.googleapis.com/css2?family=Raleway;');
+            .a,.b,.c{fill:#fff;}.a{stroke:#f1f1f2;stroke-width:75px;}.c{font-size:500px;font-family:'Raleway',sans-serif;font-weight:400;}.d{letter-spacing:0em;}.e{letter-spacing:-0.13em;}.f{letter-spacing:-0.01em;}</style>
+    </defs>
+    <title>white-vertical</title>
+    <line class="a" x1="1629.05" y1="34.97" x2="42.66" y2="710.5" />
+    <line class="a" x1="3167.59" y1="715.85" x2="1595.31" y2="34.41" />
+    <line class="a" x1="57.45" y1="679.47" x2="57.45" y2="1825.13" />
+    <line class="a" x1="1597.48" y1="3352.58" x2="44.93" y2="2687.72" />
+    <line class="a" x1="3167.98" y1="2679.6" x2="1574.03" y2="3352.89" />
+    <line class="a" x1="1588.72" y1="2456.24" x2="36.18" y2="1791.38" />
+    <line class="a" x1="3127.26" y1="1781.36" x2="1569.28" y2="2462.55" />
+    `
+    <line class="a" x1="3144.92" y1="1747.73" x2="3144.92" y2="2712.64" />
+    <line class="a" x1="1585.49" y1="3362.36" x2="1585.49" y2="924.98" />
+    <line class="a" x1="678.96" y1="907.77" x2="2486.94" y2="907.77" />
+    <line class="a" x1="16.05" y1="2690.39" x2="459.89" y2="2480.25" />
+    <line class="a" x1="3148.67" y1="685.06" x2="3148.67" y2="1129.81" />
+    <circle class="b" cx="3147.67" cy="1274.9" r="45.83" />
+    <text class="c" transform="translate(3659.45 1249.9)">
+        <tspan class="d">S</tspan>
+        <tspan x="317.5" y="0">tudent</tspan>
+        <tspan class="e" x="0" y="622">T</tspan>
+        <tspan x="256.5" y="622">echnical</tspan>
+        <tspan class="f" x="0" y="1244">C</tspan>
+        <tspan x="364" y="1244">ommunity</tspan>
+    </text>
+</svg>

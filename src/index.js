@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import "../src/assets/vendor/nucleo/css/nucleo.css";
+import "../src/assets/vendor/font-awesome/css/font-awesome.min.css";
+import "../src/assets/scss/my-custom-design.scss";
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -11,7 +16,20 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// serviceWorker.register({
+//   onUpdate: registration => {
+//     const waitingSW = registration.waiting;
+
+//     if (waitingSW) {
+//       alert("A new version of the app is available.Please update")
+//       waitingSW.addEventListener("statechange", event => {
+//         if (event.target.state === 'activated') {
+//           window.location.reload();
+//         }
+//       });
+//       waitingSW.postMessage({ type: "SKIP_WAITING" })
+//     }
+//   }
+// });
