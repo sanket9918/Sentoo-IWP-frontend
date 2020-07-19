@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 class Dashboard extends Component {
     render() {
         return (
@@ -18,7 +18,7 @@ class Dashboard extends Component {
                                             alt="..."
                                             className="img-fluid"
                                             style={{ maxHeight: '2em', margin: '1em' }}
-                                            src={require("../assets/img/divider.svg")}
+                                            src={require("../../assets/img/divider.svg")}
 
                                         />
                                         <br />

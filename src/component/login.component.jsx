@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginUser } from '../actions/authActions'
 import { Link } from 'react-router-dom';
-import Background from '../assets/img/login_bg.svg';
 
 
 class Login extends Component {

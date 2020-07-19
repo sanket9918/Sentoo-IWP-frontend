@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar1 from './navbar.component';
 import { Container, Row, Col, Button, Card, CardBody, CardHeader, Form, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -51,10 +50,10 @@ class Register extends Component {
         const { errors } = this.state
         return (
             <>
-                <Navbar1 />
+                
 
                 <div className='position-relative'>
-                    <section className="section section-lg section-shaped" style={{ height: '100vh' }}>
+                    <section className="section section-lg section-shaped section-login" >
                         <div className="shape shape-style-1 shape-default">
 
                         </div>

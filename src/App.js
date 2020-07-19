@@ -8,7 +8,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar1 from './component/navbar.component';
 import { Provider } from 'react-redux';
 import store from './store';
-import Dashboard from './component/dashboard.component';
+import Dashboard from './component/protected-component/dashboard.component';
+import Error from './component/error.component';
+import ProtectedRoute from './component/protected-component/protected.component';
 
 
 function App() {
@@ -23,8 +25,10 @@ function App() {
               <Route path='/' exact component={Hero} />
               <Route path='/login' exact component={Login} />
               <Route path='/register' exact component={Register} />
-              <Route path='/dashboard' exact component={Dashboard} />
 
+              <ProtectedRoute path='/dashboard' component={Dashboard} />
+              <Route component={Error} />
+            
             </Switch>
 
           </div>

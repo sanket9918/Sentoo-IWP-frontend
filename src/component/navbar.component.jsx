@@ -11,7 +11,6 @@ import {
     Container,
     Row,
     Col,
-    UncontrolledTooltip
 } from "reactstrap";
 
 class Navbar1 extends Component {
@@ -34,9 +33,9 @@ class Navbar1 extends Component {
                                     <h3 ><b>Sentoo</b></h3>
                                 </Link>
                             </NavbarBrand>
-                            <button className="navbar-toggler" id="navbar_global">
+                            {/* <button className="navbar-toggler" id="navbar_global">
                                 <span className="navbar-toggler-icon" />
-                            </button>
+                            </button> */}
                             <UncontrolledCollapse navbar toggler="#navbar_global">
                                 <div className="navbar-collapse-header">
                                     <Row>
@@ -67,7 +66,6 @@ class Navbar1 extends Component {
                                             id="tooltip333589074"
                                             target="_blank"
                                         >
-                                            <span style={{color:'black'}}>About</span>
                                             <span className="nav-link-inner--text d-lg-none ml-2">
                                                 About
                       </span>
