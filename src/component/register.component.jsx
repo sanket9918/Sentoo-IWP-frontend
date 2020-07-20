@@ -74,7 +74,7 @@ class Register extends Component {
                                                             <InputGroup className="input-group-alternative">
                                                                 <InputGroupAddon addonType="prepend">
                                                                     <InputGroupText>
-                                                                        <i className="ni ni-email-83" />
+                                                                        <i className="fa fa-user" />
                                                                     </InputGroupText>
                                                                 </InputGroupAddon>
                                                                 <Input

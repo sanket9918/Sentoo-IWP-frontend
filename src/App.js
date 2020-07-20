@@ -11,6 +11,7 @@ import store from './store';
 import Dashboard from './component/protected-component/dashboard.component';
 import Error from './component/error.component';
 import ProtectedRoute from './component/protected-component/protected.component';
+import Footer from './component/footer.component';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
               <Route component={Error} />
             
             </Switch>
-
+            <Footer />
           </div>
         </BrowserRouter>
       </Provider>
