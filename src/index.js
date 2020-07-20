@@ -16,20 +16,20 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+// serviceWorker.unregister();
 
-// serviceWorker.register({
-//   onUpdate: registration => {
-//     const waitingSW = registration.waiting;
+serviceWorker.register({
+  onUpdate: registration => {
+    const waitingSW = registration.waiting;
 
-//     if (waitingSW) {
-//       alert("A new version of the app is available.Please update")
-//       waitingSW.addEventListener("statechange", event => {
-//         if (event.target.state === 'activated') {
-//           window.location.reload();
-//         }
-//       });
-//       waitingSW.postMessage({ type: "SKIP_WAITING" })
-//     }
-//   }
-// });
+    if (waitingSW) {
+      alert("A new version of the app is available.Please update")
+      waitingSW.addEventListener("statechange", event => {
+        if (event.target.state === 'activated') {
+          window.location.reload();
+        }
+      });
+      waitingSW.postMessage({ type: "SKIP_WAITING" })
+    }
+  }
+});
