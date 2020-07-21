@@ -28,6 +28,8 @@ function App() {
               <Route path='/register' exact component={Register} />
 
               <ProtectedRoute path='/dashboard' component={Dashboard} />
+              {/* <Route path='/dashboard' exact component={Dashboard} /> */}
+
               <Route component={Error} />
             
             </Switch>

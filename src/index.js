@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import "../src/assets/vendor/nucleo/css/nucleo.css";
 import "../src/assets/vendor/font-awesome/css/font-awesome.min.css";
 import "../src/assets/scss/my-custom-design.scss";
+import "../src/assets/scss/my-style.scss";
 
 
 ReactDOM.render(
@@ -25,7 +26,7 @@ serviceWorker.register({
     if (waitingSW) {
       alert("A new version of the app is available.Please update")
       waitingSW.addEventListener("statechange", event => {
-        if (event.target.state === 'activated') {
+      if (event.target.state === 'activated') {
           window.location.reload();
         }
       });

@@ -18,31 +18,31 @@ class Hero extends Component {
                             <div className="col px-0">
                                 <Row>
                                     <Col sm="12" lg='6' md='12'>
-                                      
-                                            <h1 className="display-3" style={{ fontSize: "48px" }}>
-                                                Rest assured and get an accomodation{" "}
 
-                                            </h1>
-                                   
+                                        <h1 className="display-3" style={{ fontSize: "48px" }}>
+                                            Rest assured and get an accomodation{" "}
+
+                                        </h1>
+
                                         <p className="lead">
-Get yourself your own suitable and comfortable stay by choosing the highest rated hotel.
+                                            Get yourself your own suitable and comfortable stay by choosing the highest rated hostel.
                       </p>
-                                     
+
                                         <div className="btn-wrapper">
                                             <Link to='/login'>
                                                 <Button
                                                     className="btn-icon mb-3 mb-sm-0"
                                                     color="danger"
-                                              
-                                               
+
+
                                                 >
 
 
                                                     <span className="btn-inner--text">Try it!</span>
                                                 </Button></Link>
 
-                                            </div>
-                                        
+                                        </div>
+
                                     </Col>
                                     <Col lg="6" md='12'>
                                         <img
