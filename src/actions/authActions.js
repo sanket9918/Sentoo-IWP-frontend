@@ -7,7 +7,7 @@ import { SET_USER, GET_ERRORS } from './types';
 
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('/api/user/signup', userData)
+        .post('https://sentoo-back.herokuapp.com/api/user/signup', userData)
         .then(res => history.push('/'))
         .catch(err => {
             dispatch({
@@ -21,7 +21,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const loginUser = userData => dispatch => {
     axios
-        .post('api/user/signin',userData)
+        .post('https://sentoo-back.herokuapp.com/api/user/signin',userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem('token', token);
