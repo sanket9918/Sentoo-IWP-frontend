@@ -4,16 +4,7 @@ import { property } from '../../utils/property'
 import Rating from './rating.component';
 import { Link, Route } from 'react-router-dom';
 class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-
-
-    }
-    cardClick(e){
-    }
+     
     render() {
         return (
             <>
@@ -45,8 +36,8 @@ class Dashboard extends Component {
                                         blockId:e.id,
                                         blockCode: e.code,
                                         blockName: e.name,
-                                        blockLocation: e.location,
-                                        
+                                        blockLocation: e.location,  
+                                        blockPriority:e.blockPriority
                                     }
                                     
                                 }}>

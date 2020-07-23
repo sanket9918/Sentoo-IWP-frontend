@@ -17,7 +17,7 @@ class About extends Component{
                                 <img
                                     alt="..."
                                             className="img-fluid"
-                                    style={{maxHeight:'2em',margin:'1em'}}        
+                                    style={{height:"1em",margin:'1em'}}        
                                     src={require("../assets/img/divider.svg")}
 
                                         />
@@ -25,6 +25,14 @@ class About extends Component{
                                         <h4>
                                             Live with a style
                                         </h4>
+                                        
+                                        <img
+                                            alt="..."
+                                            className="img-fluid"
+                                            style={{ height: "1em", margin: '1em',transform:'rotate(180deg)' }}
+                                            src={require("../assets/img/divider.svg")}
+
+                                        />
                                     </Col>
                                    
                                 </Row>
