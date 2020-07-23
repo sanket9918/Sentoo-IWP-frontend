@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Hero from './component/main-header.component';
 import Register from './component/register.component';
+import Rating from './component/protected-component/rating.component';
 
 import Login from './component/login.component';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -28,7 +29,9 @@ function App() {
               <Route path='/register' exact component={Register} />
 
               <ProtectedRoute path='/dashboard' component={Dashboard} />
-              {/* <Route path='/dashboard' exact component={Dashboard} /> */}
+              <ProtectedRoute path='/rating' component={Rating} />
+              {/* <Route path='/dashboard' exact component={Dashboard} />
+              <Route path='/rating' component={(props) => <Rating {...props} />} /> */}
 
               <Route component={Error} />
             

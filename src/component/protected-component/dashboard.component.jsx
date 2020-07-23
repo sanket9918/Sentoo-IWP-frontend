@@ -1,123 +1,79 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card, Button } from "reactstrap";
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/styles';
-import { logout } from '../../actions/authActions'
-const styles = theme => ({
-    root: {
-        width: "20em",
-        "& label.Mui-focused": {
-            color: "#A81432"
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "#A81432"
-        },
-    }
-})
-
+import { Container, Row, Col, Card, Button, CardBody } from "reactstrap";
+import { property } from '../../utils/property'
+import Rating from './rating.component';
+import { Link, Route } from 'react-router-dom';
 class Dashboard extends Component {
-    onSubmit(e) {
-        e.preventDefault();
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+
+
     }
-    onLogout = e => {
-        e.preventDefault();
-        this.props.logout();
-        this.props.history.push('/');
+    cardClick(e){
     }
     render() {
-        const { classes } = this.props;
         return (
             <>
-
                 <section className="section section-lg section-shaped">
-                    <div className="shape shape-style-1 shape-default">
+                    <div className="shape shape-style-1 shape-default" >
 
                     </div>
                     <Container>
-                        <Row>
-                            <Col lg='5'>
-                                <div className='text-center'></div>
-                                <Card className="card-profile shadow block-card" style={{ backgroundColor: '#A81432' }}>
-                                    <div className="px-4">
-                                        <Row className="justify-content-center">
+                        <section className="section  section-shaped">
 
-                                            <div className="card-profile-image">
-                                                <div className='center-tag'>
+                            <div className="shape shape-style-1 shape-default" style={{ backgroundColor: "#A81432", borderRadius: '1em' }} >
 
-                                                    <img
-                                                        alt="..."
-                                                        className="rounded-circle"
-                                                        style={{ height: '8em', width: '8em', margin: '3em' }}
-                                                        src={require("../../assets/img/building_profile.svg")}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="text-center mt-1 mb-3 ">
-                                                <h3 className='text-white'>
-                                                    Block name{" "}
-                                                    <span className="font-weight-light text-white">, Block Code</span>
-                                                </h3>
-                                                <div className="h6 font-weight-300 text-white">
-                                                    <i className="ni location_pin mr-2 text-white" />
-                     VIT,University
-                    </div>
-                                                <div className="h6 mt-4 text-white">
-                                                    <i className="ni business_briefcase-24 mr-2" />
-                      Average rating -
-                    </div><br />
-                                                <Button
-                                                    className="my-4"
-                                                    type="button"                                                   
-                                                    onClick={this.onLogout}
-                                                >
-                                                    Logout
-                                </Button>
-
-                                            </div>
-
-                                        </Row>
-                                    </div>
-                                </Card>
-                            </Col>
-
-                            <Col>
-                                <div classname="tidy-mobile"><br /></div>
-                                <h3 className='center-tag'>
-                                    Post Your comments!
-                                </h3>
-                                <form noValidate autoComplete="off" className='center-tag' onSubmit={this.onSubmit}>
-                                    <TextField className={classes.root} id="standard-basic" label="Comments" /><br />
-                                    <Button
-                                        className="my-4"
-                                        type="submit"
-                                        style={{ backgroundColor: "#A81432", color: "#fff" }}
-
-                                    >
-                                        Submit Comment
-                                </Button>
-
-                                </form>
-
-                            </Col>
-
-                        </Row>
+                            </div>
+                            <div className='center-tag '><h3 className='text-white' >Let's get started:-)</h3></div>
+                        </section>
                     </Container>
                 </section>
 
+                <section className="section  section-shaped">
+                    <div className="shape shape-style-1 shape-default" >
 
+                    </div>
+                    <Container>
+                        <div className="grid">
+                            {property.map((e) => (
+                                <Link to={{
+                                    pathname: '/rating',
+                                    query: {
+                                        blockId:e.id,
+                                        blockCode: e.code,
+                                        blockName: e.name,
+                                        blockLocation: e.location,
+                                        
+                                    }
+                                    
+                                }}>
+                                <Card style={{ backgroundColor: '#A81432', textAlign: 'center',cursor:'pointer'}} key={e.id} onClick={() => {
+                                    console.log(e.id)
+                                }}>
+                                    <CardBody>
+                                        <span className="text-white card-text">{e.code}</span><br />
+                                        <span className="text-white card-text">{e.name}</span>
+                                        <hr />
+                                        <span className="text-white card-text">{e.location}</span>
+
+                                    </CardBody>
+                                    </Card>
+                                </Link>
+                            )
+                            )
+                            }
+
+
+                        </div>
+                    </Container>
+                </section>
             </>
+
         )
     }
 }
 
-Dashboard.propTypes = {
-    classes: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired,
-    auth:PropTypes.object.isRequired
-}
-const mapStateToProps = state => ({
-    auth:state.auth
-})
-export default connect(mapStateToProps,{logout})(withStyles(styles)(Dashboard));
+export default Dashboard;

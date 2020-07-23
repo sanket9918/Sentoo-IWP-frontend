@@ -10,3 +10,14 @@
     margin-top: 1em;
 }
 }
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  }
+
+ .card-text{
+     font-size: 1em;
+     font-weight: bold;
+ }
