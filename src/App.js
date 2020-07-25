@@ -13,7 +13,7 @@ import Dashboard from './component/protected-component/dashboard.component';
 import Error from './component/error.component';
 import ProtectedRoute from './component/protected-component/protected.component';
 import Footer from './component/footer.component';
-
+import Property from './component/protected-component/property.component'
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
               <Route path='/' exact component={Hero} />
               <Route path='/login' exact component={Login} />
               <Route path='/register' exact component={Register} />
+              <Route path='/property' exact component={Property} />
 
               <ProtectedRoute path='/dashboard' component={Dashboard} />
               <ProtectedRoute path='/rating' component={Rating} />

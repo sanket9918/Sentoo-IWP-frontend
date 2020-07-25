@@ -48,7 +48,7 @@ class Login extends Component {
         const { errors } = this.state
         return (
             <>
-                <Navbar1 />
+                
 
                 <div className='position-relative '>
                     <section className="section section-lg section-shaped section-login" >
