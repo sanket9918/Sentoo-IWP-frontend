@@ -2,10 +2,32 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button, CardBody } from "reactstrap";
 import { property } from '../../utils/property'
 import Rating from './rating.component';
+import axios from 'axios'
 import { Link, Route } from 'react-router-dom';
 class Dashboard extends Component {
-     
+    constructor(props) {
+        super(props);
+        this.state = {
+            propertyList: [],
+            loading: true
+        }
+    }
+
+    getProp() {
+        axios
+            .post("https://sentoo-back.herokuapp.com/api/property/getprop")
+            .then(res =>
+                this.setState({
+                    propertyList: res.data,
+                    loading: false
+                }))
+
+    }
+    componentDidMount() {
+        this.getProp();
+    }
     render() {
+        const { propertyList,loading } = this.state
         return (
             <>
                 <section className="section section-lg section-shaped">
@@ -28,29 +50,29 @@ class Dashboard extends Component {
 
                     </div>
                     <Container>
-                        <div className="grid">
-                            {property.map((e) => (
+                        {loading ? <div className="center-tag"><span>Please wait while assets are being loaded...</span></div>:
+                       <div className="grid">
+                            {propertyList.map((e) => (
                                 <Link to={{
                                     pathname: '/rating',
                                     query: {
-                                        blockId:e.id,
+                                        uid: e.uid,
                                         blockCode: e.code,
                                         blockName: e.name,
-                                        blockLocation: e.location,  
-                                        blockPriority:e.blockPriority
+                                        blockLocation: e.location,
                                     }
-                                    
-                                }}>
-                                <Card style={{ backgroundColor: '#A81432', textAlign: 'center',cursor:'pointer'}} key={e.id} onClick={() => {
-                                    console.log(e.id)
-                                }}>
-                                    <CardBody>
-                                        <span className="text-white card-text">{e.code}</span><br />
-                                        <span className="text-white card-text">{e.name}</span>
-                                        <hr />
-                                        <span className="text-white card-text">{e.location}</span>
 
-                                    </CardBody>
+                                }}>
+                                    <Card style={{ backgroundColor: '#A81432', textAlign: 'center', cursor: 'pointer' }} key={e.id} onClick={() => {
+                                        console.log(e.id)
+                                    }}>
+                                        <CardBody>
+                                            <span className="text-white card-text">{e.code}</span><br />
+                                            <span className="text-white card-text">{e.name}</span>
+                                            <hr />
+                                            <span className="text-white card-text">{e.location}</span>
+
+                                        </CardBody>
                                     </Card>
                                 </Link>
                             )
@@ -58,7 +80,7 @@ class Dashboard extends Component {
                             }
 
 
-                        </div>
+                        </div>}
                     </Container>
                 </section>
             </>

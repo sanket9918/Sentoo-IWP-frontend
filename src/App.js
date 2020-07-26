@@ -28,11 +28,11 @@ function App() {
               <Route path='/login' exact component={Login} />
               <Route path='/register' exact component={Register} />
               <Route path='/property' exact component={Property} />
-
+{/* 
               <ProtectedRoute path='/dashboard' component={Dashboard} />
-              <ProtectedRoute path='/rating' component={Rating} />
-              {/* <Route path='/dashboard' exact component={Dashboard} />
-              <Route path='/rating' component={(props) => <Rating {...props} />} /> */}
+              <ProtectedRoute path='/rating' component={Rating} /> */}
+              <Route path='/dashboard' exact component={Dashboard} />
+              <Route path='/rating' component={(props) => <Rating {...props} />} />
 
               <Route component={Error} />
             
