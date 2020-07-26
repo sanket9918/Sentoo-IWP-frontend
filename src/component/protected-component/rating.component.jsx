@@ -31,15 +31,15 @@ class Rating extends Component {
     getComment() {
         const { location } = this.props
         axios
-            .post("https://sentoo-back.herokuapp.com//api/property/getcomment", {
-                uid:location.query.uid
+            .post("https://sentoo-back.herokuapp.com/api/property/getcomment", {
+                uid: location.query.uid
             })
             .then(res => {
                 this.setState({
                     commentList: res.data,
-                    loading:false
+                    loading: false
+                })
             })
-        })
     }
     onChangeComment = e => {
         e.preventDefault();
@@ -58,7 +58,7 @@ class Rating extends Component {
     render() {
         const { classes, location } = this.props;
         const { user } = this.props.auth
-        const { commentList,loading}  =this.state
+        const { commentList, loading } = this.state
 
         return (
             <>
@@ -133,11 +133,11 @@ class Rating extends Component {
                                                     comment: this.state.comment,
                                                     email: `${user.email}`
 
-                                                }).then(() => 
+                                                }).then(() =>
                                                     this.props.history.push('/dashboard')
                                                 )
-                                                
-                                                
+
+
                                         }}
 
                                     >
@@ -156,20 +156,20 @@ class Rating extends Component {
                                     <h3>
                                         Previous comments
                                     </h3>
-                                    <br />                                    
+                                    <br />
                                 </div>
                                 <section>
-                                    
+
                                     {loading ? <div className="center-tag"><span>Please wait while comments are being loaded...</span></div> :
-                                        
-                                            commentList.map((e) => (
-                                                <Card style={{ margin: '1em' }}>
-                                                    <CardBody>
-                                                        {e.comment}
-                                                    </CardBody>
-                                                </Card>
-                                            ))
-                                        }
+
+                                        commentList.map((e) => (
+                                            <Card style={{ margin: '1em' }}>
+                                                <CardBody>
+                                                    {e.comment}
+                                                </CardBody>
+                                            </Card>
+                                        ))
+                                    }
                                 </section>
                             </Col>
                         </Row>
