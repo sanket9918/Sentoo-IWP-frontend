@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export const addProperty = (data, history) => dispatch => {
     axios
-        .post("https://sentoo-back.herokuapp.com//api/property/addprop", data)
+        .post("https://sentoo-back.herokuapp.com/api/property/addprop", data)
         .then(res => history.push('/'))
         .catch(err => {
             console.log(err)
