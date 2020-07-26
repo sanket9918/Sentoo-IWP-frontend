@@ -136,8 +136,19 @@ class Property extends Component {
 
                                             >
                                                     Submit
-                                </Button></div>
+                                </Button> <span className="my-4" style={{ color:'#A81432',cursor:'pointer'}} onClick={() => {
+                                                    this.props.history.push('/dashboard')
+                                }}>BACK</span></div>
                                         </form>
+                                    </Col>
+                                    <Col>
+                                        <img
+                                            alt="..."
+                                            className="img-fluid property-mobile"
+                                            style={{ height: "40em" }}
+                                            src={require("../../assets/img/property.svg")}
+
+                                        />
                                     </Col>
                                 </Row>
                             </div>

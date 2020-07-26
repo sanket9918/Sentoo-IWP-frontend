@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar1 from './navbar.component';
 import { Container, Row, Col, Button, Card, CardBody, CardHeader, Form, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

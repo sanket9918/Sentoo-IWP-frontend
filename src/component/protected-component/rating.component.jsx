@@ -102,9 +102,11 @@ class Rating extends Component {
                                                 <Button
                                                     className="my-4"
                                                     type="button"
-                                                    onClick={this.onLogout}
+                                                    onClick={() => {
+                                                        this.props.history.push('/dashboard')
+                                                    }}
                                                 >
-                                                    Logout
+                                                    Back
                                 </Button>
 
                                             </div>
