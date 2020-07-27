@@ -148,7 +148,7 @@ class Rating extends Component {
                                     <div className='center-tag'>
                                         <br />
                                         <h3>
-                                            Previous comments
+                                            You previously commented  
                                     </h3>
                                         <br />
                                         {myComment}
