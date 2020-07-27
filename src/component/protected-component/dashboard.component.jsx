@@ -71,9 +71,9 @@ class Dashboard extends Component {
                                     <Link to='/property'>
                                     <Card style={{ backgroundColor: '#A81432', textAlign: 'center', cursor: 'pointer' }}>
                                         <CardBody>
-                                            <i class="fa fa-plus add text-white" aria-hidden="true"></i><br />
+                                                <i class="fa fa-plus add text-white" aria-hidden="true"></i><br /><br />
 
-                                            <span className='text-white'>Add Property </span>
+                                            <span className='text-white'>Add Property</span>
                                         </CardBody>
                                         </Card>
                                     </Link>
