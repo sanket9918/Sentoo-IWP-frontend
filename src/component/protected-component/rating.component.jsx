@@ -24,8 +24,32 @@ class Rating extends Component {
         this.state = {
             comment: "",
             commentList: [],
-            loading: true
+            loading: true,
+            myComment:"",
+            commented_status:false
         }
+    }
+
+    getMyComment() {
+        const { location } = this.props
+        const { user } = this.props.auth
+        axios
+            .post("https://sentoo-back.herokuapp.com/api/property/getusercomment", {
+                "uid": location.query.uid,
+                "email":user.email
+            })
+            .then(res => {
+                this.setState({
+                    myComment: res.data,
+                    commented_status:true
+            })
+        })
+
+    }
+    deleteMyComment() {
+        const { location } = this.props
+        const { user } = this.props.auth
+        
     }
 
     getComment() {
@@ -54,15 +78,15 @@ class Rating extends Component {
     }
     componentDidMount() {
         this.getComment()
+        this.getMyComment()
     }
     render() {
         const { classes, location } = this.props;
         const { user } = this.props.auth
-        const { commentList, loading } = this.state
-
+        const { commentList, loading,myComment,commented_status } = this.state
         return (
             <>
-
+                
                 <section className="section section-lg section-shaped">
                     <div className="shape shape-style-1 shape-default">
 
@@ -118,38 +142,80 @@ class Rating extends Component {
 
                             <Col>
                                 <div classname="tidy-mobile"><br /></div>
-                                <h3 className='center-tag'>
-                                    Post Your comments!
+                                {(commented_status) ?
+                                    
+                                    
+                                    <div className='center-tag'>
+                                        <br />
+                                        <h3>
+                                            Previous comments
+                                    </h3>
+                                        <br />
+                                        {myComment}
+                                        <br />
+                                        <Button
+                                            className="my-4"
+                                            type="button"
+                                            style={{ backgroundColor: "#A81432", color: "#fff" }}
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                axios
+                                                    .post("https://sentoo-back.herokuapp.com/api/property/deletecomment", {
+                                                        "uid": location.query.uid,
+                                                        "email": user.email
+                                                    })
+                                                    .then(res => {
+                                                        this.setState({
+                                                            commented_status: false
+                                                        })
+                                                    })
+                                            }}
+                                        >
+                                            Delete
+                                </Button>
+                                        <br />
+                                        <span><i>* deleted comments get refreshed automatically</i></span>
+                                   </div>
+                                    
+                                    
+                                    
+
+                                    :
+                                    <div>
+                                        <h3 className='center-tag'>
+                                            Post Your comments!
                                 </h3>
-                                <form noValidate autoComplete="off" className='center-tag'>
-                                    <TextField className={classes.root} id="standard-basic" label="Comments" onChange={this.onChangeComment} value={this.state.comment} /><br />
-                                    <Button
-                                        className="my-4"
-                                        type="submit"
-                                        style={{ backgroundColor: "#A81432", color: "#fff" }}
-                                        onClick={(e) => {
-                                            e.preventDefault()
-                                            axios
-                                                .post("https://sentoo-back.herokuapp.com/api/property/addcomment", {
-                                                    uid: location.query.uid,
-                                                    comment: this.state.comment,
-                                                    email: `${user.email}`
+                                        <form noValidate autoComplete="off" className='center-tag'>
+                                            <TextField className={classes.root} id="standard-basic" label="Comments" onChange={this.onChangeComment} value={this.state.comment} /><br />
+                                            <Button
+                                                className="my-4"
+                                                type="submit"
+                                                style={{ backgroundColor: "#A81432", color: "#fff" }}
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    axios
+                                                        .post("https://sentoo-back.herokuapp.com/api/property/addcomment", {
+                                                            uid: location.query.uid,
+                                                            comment: this.state.comment,
+                                                            email: `${user.email}`
 
-                                                }).then(() =>
-                                                    this.props.history.push('/dashboard')
-                                                )
+                                                        }).then(() =>
+                                                            this.props.history.push('/dashboard')
+                                                        )
 
 
-                                        }}
+                                                }}
 
-                                    >
-                                        Submit Comment
+                                            >
+                                                Submit Comment
                                 </Button>
 
-                                </form>
-
+                                        </form>
+                                    </div>
+                                    
+                                }
                             </Col>
-
+                           
                         </Row>
                         <Row>
                             <Col>
