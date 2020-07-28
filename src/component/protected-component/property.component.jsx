@@ -75,6 +75,10 @@ class Property extends Component {
         }
         this.props.addProperty(newProp,this.props.history)
     }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+
+    }
     render() {
         const { classes } = this.props
         return (

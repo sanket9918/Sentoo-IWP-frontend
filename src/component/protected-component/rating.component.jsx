@@ -77,6 +77,7 @@ class Rating extends Component {
         this.props.history.push('/');
     }
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.getComment()
         this.getMyComment()
     }
