@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/authActions'
 import { Link } from 'react-router-dom';
+import { backendURL } from '../../utils/integration'
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ class Dashboard extends Component {
 
     getProp() {
         axios
-            .post("https://sentoo-back.herokuapp.com/api/property/getprop")
+            .post(`${backendURL}/api/property/getprop`)
             .then(res =>
                 this.setState({
                     propertyList: res.data,
@@ -55,7 +56,7 @@ class Dashboard extends Component {
                                     className="my-4"
                                     type="submit"
                                     style={{ backgroundColor: "#A81432", color: "#fff" }}
-                                    onClick={this.onLogout}                                 
+                                    onClick={this.onLogout}
                                 >
                                     logout
                                     </Button>
@@ -70,12 +71,12 @@ class Dashboard extends Component {
                                 <br />
                                 <div className="grid" style={{ marginTop: '1em' }}>
                                     <Link to='/property'>
-                                    <Card style={{ backgroundColor: '#A81432', textAlign: 'center', cursor: 'pointer' }}>
-                                        <CardBody>
+                                        <Card style={{ backgroundColor: '#A81432', textAlign: 'center', cursor: 'pointer' }}>
+                                            <CardBody>
                                                 <i class="fa fa-plus add text-white" aria-hidden="true"></i><br /><br />
 
-                                            <span className='text-white'>Add Property</span>
-                                        </CardBody>
+                                                <span className='text-white'>Add Property</span>
+                                            </CardBody>
                                         </Card>
                                     </Link>
 
@@ -90,11 +91,11 @@ class Dashboard extends Component {
 
                 <section className="section  section-shaped" style={{ marginTop: '-10em' }} >
                     <div className="shape shape-style-1 shape-default" >
-                      
+
                     </div>
-                    
+
                     <Container>
-                        <span style={{ fontSize: '1.5em'}}>Properties to explore</span>
+                        <span style={{ fontSize: '1.5em' }}>Properties to explore</span>
                         {loading ? <div className="center-tag"><span>Please wait while assets are being loaded...</span></div> :
                             <div className="grid" style={{ marginTop: '2em' }}>
                                 {propertyList.map((e) => (

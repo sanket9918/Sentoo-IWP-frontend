@@ -2,12 +2,12 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import { SET_USER, GET_ERRORS } from './types';
-
+import { backendURL } from '../utils/integration'
 // SignUp
 
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('https://sentoo-back.herokuapp.com/api/user/signup', userData)
+        .post(`${backendURL}/api/user/signup`,userData)
         .then(res => history.push('/'))
         .catch(err => {
             dispatch({
@@ -21,7 +21,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const loginUser = userData => dispatch => {
     axios
-        .post('https://sentoo-back.herokuapp.com/api/user/signin',userData)
+        .post(`${backendURL}/api/user/signin`, userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem('token', token);
@@ -33,16 +33,16 @@ export const loginUser = userData => dispatch => {
             err => {
                 dispatch({
                     type: GET_ERRORS,
-                    payload:err.response.data
+                    payload: err.response.data
                 })
-        }
-    )
+            }
+        )
 }
 
 export const setUser = decode => {
     return {
         type: SET_USER,
-        payload:decode
+        payload: decode
     }
 }
 

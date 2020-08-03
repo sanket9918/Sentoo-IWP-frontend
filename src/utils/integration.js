@@ -1,0 +1,1 @@
+export const backendURL = "https://sentoo-back.herokuapp.com"

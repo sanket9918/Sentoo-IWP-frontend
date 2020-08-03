@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/styles';
 import { logout } from '../../actions/authActions'
 import axios from 'axios';
+import { backendURL } from '../../utils/integration'
 const styles = theme => ({
     root: {
         width: "20em",
@@ -25,8 +26,8 @@ class Rating extends Component {
             comment: "",
             commentList: [],
             loading: true,
-            myComment:"",
-            commented_status:false
+            myComment: "",
+            commented_status: false
         }
     }
 
@@ -34,28 +35,22 @@ class Rating extends Component {
         const { location } = this.props
         const { user } = this.props.auth
         axios
-            .post("https://sentoo-back.herokuapp.com/api/property/getusercomment", {
+            .post(`${backendURL}/api/property/getusercomment`, {
                 "uid": location.query.uid,
-                "email":user.email
+                "email": user.email
             })
             .then(res => {
                 this.setState({
                     myComment: res.data,
-                    commented_status:true
+                    commented_status: true
+                })
             })
-        })
 
     }
-    deleteMyComment() {
-        const { location } = this.props
-        const { user } = this.props.auth
-        
-    }
-
     getComment() {
         const { location } = this.props
         axios
-            .post("https://sentoo-back.herokuapp.com/api/property/getcomment", {
+            .post(`${backendURL}/api/property/getcomment`, {
                 uid: location.query.uid
             })
             .then(res => {
@@ -84,10 +79,10 @@ class Rating extends Component {
     render() {
         const { classes, location } = this.props;
         const { user } = this.props.auth
-        const { commentList, loading,myComment,commented_status } = this.state
+        const { commentList, loading, myComment, commented_status } = this.state
         return (
             <>
-                
+
                 <section className="section section-lg section-shaped">
                     <div className="shape shape-style-1 shape-default">
 
@@ -144,12 +139,12 @@ class Rating extends Component {
                             <Col>
                                 <div classname="tidy-mobile"><br /></div>
                                 {(commented_status) ?
-                                    
-                                    
+
+
                                     <div className='center-tag'>
                                         <br />
                                         <h3>
-                                            You previously commented  
+                                            You previously commented
                                     </h3>
                                         <br />
                                         {myComment}
@@ -161,7 +156,7 @@ class Rating extends Component {
                                             onClick={(e) => {
                                                 e.preventDefault()
                                                 axios
-                                                    .post("https://sentoo-back.herokuapp.com/api/property/deletecomment", {
+                                                    .post(`${backendURL}/api/property/deletecomment`, {
                                                         "uid": location.query.uid,
                                                         "email": user.email
                                                     })
@@ -176,10 +171,10 @@ class Rating extends Component {
                                 </Button>
                                         <br />
                                         <span><i>* deleted comments get refreshed automatically</i></span>
-                                   </div>
-                                    
-                                    
-                                    
+                                    </div>
+
+
+
 
                                     :
                                     <div>
@@ -195,7 +190,7 @@ class Rating extends Component {
                                                 onClick={(e) => {
                                                     e.preventDefault()
                                                     axios
-                                                        .post("https://sentoo-back.herokuapp.com/api/property/addcomment", {
+                                                        .post(`${backendURL}/api/property/addcomment`, {
                                                             uid: location.query.uid,
                                                             comment: this.state.comment,
                                                             email: `${user.email}`
@@ -213,10 +208,10 @@ class Rating extends Component {
 
                                         </form>
                                     </div>
-                                    
+
                                 }
                             </Col>
-                           
+
                         </Row>
                         <Row>
                             <Col>
