@@ -36,8 +36,6 @@ class Hero extends Component {
 
 
                                                 >
-
-
                                                     <span className="btn-inner--text">Try it!</span>
                                                 </Button></Link>
 
@@ -53,7 +51,6 @@ class Hero extends Component {
 
                                         />
                                     </Col>
-
                                 </Row>
                             </div>
                         </Container>
