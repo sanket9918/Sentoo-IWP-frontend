@@ -29,7 +29,21 @@ class Rating extends Component {
       myComment: "",
       commented_status: false,
       mycomment_status: false,
+      rating: "",
     };
+  }
+
+  getRating() {
+    const { location } = this.props;
+    axios
+      .post(`${backendURL}/api/property/getRating`, {
+        uid: location.query.uid,
+      })
+      .then((res) => {
+        this.setState({
+          rating: res.data.rating,
+        });
+      });
   }
 
   getMyComment() {
@@ -75,6 +89,7 @@ class Rating extends Component {
     window.scrollTo(0, 0);
     this.getComment();
     this.getMyComment();
+    this.getRating();
   }
   componentDidUpdate(prev) {
     if (this.state.commented_status !== prev.commented_status) {
@@ -84,7 +99,14 @@ class Rating extends Component {
   render() {
     const { classes, location } = this.props;
     const { user } = this.props.auth;
-    const { commentList, loading, myComment, commented_status } = this.state;
+    const {
+      commentList,
+      loading,
+      myComment,
+      commented_status,
+      rating,
+    } = this.state;
+
     return (
       <>
         <section className="section section-lg section-shaped">
@@ -126,7 +148,10 @@ class Rating extends Component {
                         </div>
                         <div className="h6 mt-4 text-white">
                           <i className="ni business_briefcase-24 mr-2" />
-                          Average rating -
+                          Average rating - <br />
+                          <span style={{ fontSize: "2em", fontWeight: "bold" }}>
+                            {parseFloat(rating).toFixed(2)}%
+                          </span>
                         </div>
                         <br />
                         <Button
@@ -208,6 +233,7 @@ class Rating extends Component {
                               this.setState({
                                 commented_status: true,
                                 mycomment_status: true,
+                                loading: true,
                               })
                             );
                         }}
