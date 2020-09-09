@@ -28,7 +28,6 @@ class Rating extends Component {
       loading: true,
       myComment: "",
       commented_status: false,
-      mycomment_status: false,
       rating: "",
     };
   }
@@ -232,8 +231,6 @@ class Rating extends Component {
                             .then(
                               this.setState({
                                 commented_status: true,
-                                mycomment_status: true,
-                                loading: true,
                               })
                             );
                         }}
