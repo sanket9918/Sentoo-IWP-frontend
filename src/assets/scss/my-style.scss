@@ -1,37 +1,38 @@
-.center-tag{
-    text-align: center;
-    margin: auto;
+.center-tag {
+  text-align: center;
+  margin: auto;
 }
-.block-card{
-    background-color: "#A81432";
+.block-card {
+  background-color: "#A81432";
 }
-@media only screen and (max-width: 768px){
-.tidy-mobile{
+@media only screen and (max-width: 768px) {
+  .tidy-mobile {
     margin-top: 1em;
+  }
 }
-}
-.grid { 
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
   align-items: stretch;
-  }
+}
 
- .card-text{
-     font-size: 1em;
-     font-weight: bold;
- }
- .add{
-
+.card-text {
+  font-size: 1em;
+  font-weight: bold;
+}
+.add {
   display: inline-block;
   border-radius: 60px;
   box-shadow: 0px 0px 2px #fff;
   padding: 0.5em 0.6em;
-
-
- }
- .footer{  
-    bottom: 0;
-    height: 3em;
-    width: 100%;
- }
+}
+.footer {
+  bottom: 0;
+  height: 3em;
+  width: 100%;
+}
+.comment-card {
+  border-color: #a81432 !important;
+  margin: 1em;
+}

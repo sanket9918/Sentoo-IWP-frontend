@@ -249,7 +249,7 @@ class Rating extends Component {
                   <h3>Previous comments</h3>
                   <br />
                 </div>
-                <section>
+                <div>
                   {loading ? (
                     <div className="center-tag">
                       <span>
@@ -258,12 +258,12 @@ class Rating extends Component {
                     </div>
                   ) : (
                     commentList.map((e) => (
-                      <Card style={{ margin: "1em" }}>
+                      <Card className="comment-card">
                         <CardBody>{e.comment}</CardBody>
                       </Card>
                     ))
                   )}
-                </section>
+                </div>
               </Col>
             </Row>
           </Container>
