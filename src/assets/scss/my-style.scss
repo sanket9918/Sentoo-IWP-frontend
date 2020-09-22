@@ -36,3 +36,9 @@
   border-color: #a81432 !important;
   margin: 1em;
 }
+.main-content{
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}

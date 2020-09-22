@@ -108,166 +108,174 @@ class Rating extends Component {
 
     return (
       <>
-        <section className="section section-lg section-shaped">
-          <div className="shape shape-style-1 shape-default"></div>
-          <Container>
-            <Row>
-              <Col lg="5">
-                <div className="text-center"></div>
-                <Card
-                  className="card-profile shadow block-card"
-                  style={{ backgroundColor: "#A81432" }}
-                >
-                  <div className="px-4">
-                    <Row className="justify-content-center">
-                      <div className="card-profile-image">
-                        <div className="center-tag">
-                          <img
-                            alt="..."
-                            className="rounded-circle"
-                            style={{
-                              height: "8em",
-                              width: "8em",
-                              margin: "3em",
+        <div className="main-content">
+          <section className="section section-lg section-shaped">
+            <div className="shape shape-style-1 shape-default"></div>
+            <Container>
+              <Row>
+                <Col lg="5">
+                  <div className="text-center"></div>
+                  <Card
+                    className="card-profile shadow block-card"
+                    style={{ backgroundColor: "#A81432" }}
+                  >
+                    <div className="px-4">
+                      <Row className="justify-content-center">
+                        <div className="card-profile-image">
+                          <div className="center-tag">
+                            <img
+                              alt="..."
+                              className="rounded-circle"
+                              style={{
+                                height: "8em",
+                                width: "8em",
+                                margin: "3em",
+                              }}
+                              src={require("../../assets/img/building_profile.svg")}
+                            />
+                          </div>
+                        </div>
+                        <div className="text-center mt-1 mb-3 ">
+                          <h3 className="text-white">
+                            {location.query.blockName}{" "}
+                            <span className="font-weight-light text-white">
+                              , {location.query.blockCode}
+                            </span>
+                          </h3>
+                          <div className="h6 font-weight-300 text-white">
+                            <i className="ni location_pin mr-2 text-white" />
+                            {location.query.blockLocation}
+                          </div>
+                          <div className="h6 mt-4 text-white">
+                            <i className="ni business_briefcase-24 mr-2" />
+                            Average rating - <br />
+                            <span
+                              style={{ fontSize: "2em", fontWeight: "bold" }}
+                            >
+                              {parseFloat(rating).toFixed(2)}%
+                            </span>
+                          </div>
+                          <br />
+                          <Button
+                            className="my-4"
+                            type="button"
+                            onClick={() => {
+                              this.props.history.push("/dashboard");
                             }}
-                            src={require("../../assets/img/building_profile.svg")}
-                          />
+                          >
+                            Back
+                          </Button>
                         </div>
-                      </div>
-                      <div className="text-center mt-1 mb-3 ">
-                        <h3 className="text-white">
-                          {location.query.blockName}{" "}
-                          <span className="font-weight-light text-white">
-                            , {location.query.blockCode}
-                          </span>
-                        </h3>
-                        <div className="h6 font-weight-300 text-white">
-                          <i className="ni location_pin mr-2 text-white" />
-                          {location.query.blockLocation}
-                        </div>
-                        <div className="h6 mt-4 text-white">
-                          <i className="ni business_briefcase-24 mr-2" />
-                          Average rating - <br />
-                          <span style={{ fontSize: "2em", fontWeight: "bold" }}>
-                            {parseFloat(rating).toFixed(2)}%
-                          </span>
-                        </div>
-                        <br />
-                        <Button
-                          className="my-4"
-                          type="button"
-                          onClick={() => {
-                            this.props.history.push("/dashboard");
-                          }}
-                        >
-                          Back
-                        </Button>
-                      </div>
-                    </Row>
-                  </div>
-                </Card>
-              </Col>
+                      </Row>
+                    </div>
+                  </Card>
+                </Col>
 
-              <Col>
-                <div classname="tidy-mobile">
-                  <br />
-                </div>
-                {commented_status ? (
-                  <div className="center-tag">
+                <Col>
+                  <div classname="tidy-mobile">
                     <br />
-                    <h3>You previously commented</h3>
-                    <br />
-                    {this.state.comment || myComment}
-                    <br />
-                    <Button
-                      className="my-4"
-                      type="button"
-                      style={{ backgroundColor: "#A81432", color: "#fff" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        axios
-                          .post(`${backendURL}/api/property/deletecomment`, {
-                            uid: location.query.uid,
-                            email: user.email,
-                          })
-                          .then((res) => {
-                            this.setState({
-                              commented_status: false,
-                            });
-                          });
-                      }}
-                    >
-                      Delete
-                    </Button>
-                    <br />
-                    <span>
-                      <i>* deleted comments get refreshed automatically</i>
-                    </span>
                   </div>
-                ) : (
-                  <div>
-                    <h3 className="center-tag">Post Your comments!</h3>
-                    <form noValidate autoComplete="off" className="center-tag">
-                      <TextField
-                        className={classes.root}
-                        id="standard-basic"
-                        label="Comments"
-                        onChange={this.onChangeComment}
-                        value={this.state.comment}
-                      />
+                  {commented_status ? (
+                    <div className="center-tag">
+                      <br />
+                      <h3>You previously commented</h3>
+                      <br />
+                      {this.state.comment || myComment}
                       <br />
                       <Button
                         className="my-4"
-                        type="submit"
+                        type="button"
                         style={{ backgroundColor: "#A81432", color: "#fff" }}
                         onClick={(e) => {
                           e.preventDefault();
                           axios
-                            .post(`${backendURL}/api/property/addcomment`, {
+                            .post(`${backendURL}/api/property/deletecomment`, {
                               uid: location.query.uid,
-                              comment: this.state.comment,
-                              email: `${user.email}`,
+                              email: user.email,
                             })
-                            .then(
+                            .then((res) => {
                               this.setState({
-                                commented_status: true,
-                              })
-                            );
+                                commented_status: false,
+                              });
+                            });
                         }}
                       >
-                        Submit Comment
+                        Delete
                       </Button>
-                    </form>
-                  </div>
-                )}
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="center-tag">
-                  <br />
-                  <h3>Previous comments</h3>
-                  <br />
-                </div>
-                <div>
-                  {loading ? (
-                    <div className="center-tag">
+                      <br />
                       <span>
-                        Please wait while comments are being loaded...
+                        <i>* deleted comments get refreshed automatically</i>
                       </span>
                     </div>
                   ) : (
-                    commentList.map((e) => (
-                      <Card className="comment-card">
-                        <CardBody>{e.comment}</CardBody>
-                      </Card>
-                    ))
+                    <div>
+                      <h3 className="center-tag">Post Your comments!</h3>
+                      <form
+                        noValidate
+                        autoComplete="off"
+                        className="center-tag"
+                      >
+                        <TextField
+                          className={classes.root}
+                          id="standard-basic"
+                          label="Comments"
+                          onChange={this.onChangeComment}
+                          value={this.state.comment}
+                        />
+                        <br />
+                        <Button
+                          className="my-4"
+                          type="submit"
+                          style={{ backgroundColor: "#A81432", color: "#fff" }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            axios
+                              .post(`${backendURL}/api/property/addcomment`, {
+                                uid: location.query.uid,
+                                comment: this.state.comment,
+                                email: `${user.email}`,
+                              })
+                              .then(
+                                this.setState({
+                                  commented_status: true,
+                                })
+                              );
+                          }}
+                        >
+                          Submit Comment
+                        </Button>
+                      </form>
+                    </div>
                   )}
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <div className="center-tag">
+                    <br />
+                    <h3>Previous comments</h3>
+                    <br />
+                  </div>
+                  <div>
+                    {loading ? (
+                      <div className="center-tag">
+                        <span>
+                          Please wait while comments are being loaded...
+                        </span>
+                      </div>
+                    ) : (
+                      commentList.map((e) => (
+                        <Card className="comment-card">
+                          <CardBody>{e.comment}</CardBody>
+                        </Card>
+                      ))
+                    )}
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </div>
       </>
     );
   }

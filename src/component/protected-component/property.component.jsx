@@ -82,86 +82,97 @@ class Property extends Component {
     render() {
         const { classes } = this.props
         return (
-            <>
-                <div className='position-relative '>
-                    <section className="section section-lg section-shaped" >
-                        <div className="shape shape-style-1 shape-default">
-
-                        </div>
-                        <Container className="py-md">
-
-                            <div className="col px-0">
-                                <Row>
-                                    <Col lg={{ size: '6' }}>
-
-                                        <h1 className="display-3" style={{ fontSize: "2rem" }}>
-                                            Enter the details of the property{" "}
-
-                                        </h1>
-                                        <form noValidate onSubmit={this.onSubmit}>
-                                        <TextField
-                                            className={classes.root}
-                                            label="Block UID"
-                                            variant="outlined"
-                                            id="uid"
-                                            value={this.state.uid}
-                                            onChange={this.onChangeUID}
-                                            style={{ margin: '1em' }} /><br />
-                                        <TextField
-                                            className={classes.root}
-                                            label="Block Code"
-                                            variant="outlined"
-                                            id="property-form"
-                                            value={this.state.code}
-                                            onChange={this.onChangeCode}
-                                            style={{ margin: '1em' }} /><br />
-                                        <TextField
-                                            className={classes.root}
-                                            label="Block Name"
-                                            variant="outlined"
-                                            id="property-form"
-                                            value={this.state.name}
-                                            onChange={this.onChangeName}
-                                            style={{ margin: '1em' }} /><br />
-                                        <TextField
-                                            className={classes.root}
-                                            label="Location"
-                                            variant="outlined"
-                                            id="property-form"
-                                            value={this.state.location}
-                                            onChange={this.onChangeLocation}
-                                                style={{ margin: '1em' }} /><br />
-                                            <div className='centre-tag'>
-                                            <Button
-                                                className="my-4"
-                                                    type="submit"
-                                                    
-                                                style={{ backgroundColor: "#A81432", color: "#fff" ,margin:"1em"}}
-
-                                            >
-                                                    Submit
-                                </Button> <span className="my-4" style={{ color:'#A81432',cursor:'pointer'}} onClick={() => {
-                                                    this.props.history.push('/dashboard')
-                                }}>BACK</span></div>
-                                        </form>
-                                    </Col>
-                                    <Col>
-                                        <img
-                                            alt="..."
-                                            className="img-fluid property-mobile"
-                                            style={{ height: "40em" }}
-                                            src={require("../../assets/img/property.svg")}
-
-                                        />
-                                    </Col>
-                                </Row>
-                            </div>
-                        </Container>
-                    </section>
-                </div>
-
-            </>
-        )
+          <>
+            <div className="position-relative main-content">
+              <section className="section section-lg section-shaped">
+                <div className="shape shape-style-1 shape-default"></div>
+                <Container className="py-md">
+                  <div className="col px-0">
+                    <Row>
+                      <Col lg={{ size: "6" }}>
+                        <h1 className="display-3" style={{ fontSize: "2rem" }}>
+                          Enter the details of the property{" "}
+                        </h1>
+                        <form noValidate onSubmit={this.onSubmit}>
+                          <TextField
+                            className={classes.root}
+                            label="Block UID"
+                            variant="outlined"
+                            id="uid"
+                            value={this.state.uid}
+                            onChange={this.onChangeUID}
+                            style={{ margin: "1em" }}
+                          />
+                          <br />
+                          <TextField
+                            className={classes.root}
+                            label="Block Code"
+                            variant="outlined"
+                            id="property-form"
+                            value={this.state.code}
+                            onChange={this.onChangeCode}
+                            style={{ margin: "1em" }}
+                          />
+                          <br />
+                          <TextField
+                            className={classes.root}
+                            label="Block Name"
+                            variant="outlined"
+                            id="property-form"
+                            value={this.state.name}
+                            onChange={this.onChangeName}
+                            style={{ margin: "1em" }}
+                          />
+                          <br />
+                          <TextField
+                            className={classes.root}
+                            label="Location"
+                            variant="outlined"
+                            id="property-form"
+                            value={this.state.location}
+                            onChange={this.onChangeLocation}
+                            style={{ margin: "1em" }}
+                          />
+                          <br />
+                          <div className="centre-tag">
+                            <Button
+                              className="my-4"
+                              type="submit"
+                              style={{
+                                backgroundColor: "#A81432",
+                                color: "#fff",
+                                margin: "1em",
+                              }}
+                            >
+                              Submit
+                            </Button>{" "}
+                            <span
+                              className="my-4"
+                              style={{ color: "#A81432", cursor: "pointer" }}
+                              onClick={() => {
+                                this.props.history.push("/dashboard");
+                              }}
+                            >
+                              BACK
+                            </span>
+                          </div>
+                        </form>
+                      </Col>
+                      <Col>
+                        <img
+                          alt="..."
+                          className="img-fluid property-mobile"
+                          style={{ height: "40em" }}
+                          src={require("../../assets/img/property.svg")}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                </Container>
+              </section>
+            </div>
+          </>
+        );
     }
 }
 

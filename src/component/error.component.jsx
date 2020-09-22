@@ -10,6 +10,7 @@ class Error extends Component{
     render() {
         return (
             <>
+                <div className="main-content">
                 <section className="section section-lg section-shaped">
                     <div className="shape shape-style-1 shape-default">
 
@@ -46,7 +47,8 @@ class Error extends Component{
                             </div>
                         </Row>
                     </Container>
-                </section>
+                    </section>
+                    </div>
                 </>
         )
     }
