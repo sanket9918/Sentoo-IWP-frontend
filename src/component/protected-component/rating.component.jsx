@@ -29,6 +29,7 @@ class Rating extends Component {
       myComment: "",
       commented_status: false,
       rating: "",
+      updateCounter: 0
     };
   }
 
@@ -39,9 +40,9 @@ class Rating extends Component {
         uid: location.query.uid,
       })
       .then((res) => {
-        this.setState({
+        this.setState((prevState) => ({
           rating: res.data.rating,
-        });
+        }));
       });
   }
 
@@ -90,9 +91,17 @@ class Rating extends Component {
     this.getMyComment();
     this.getRating();
   }
-  componentDidUpdate(prev) {
-    if (this.state.commented_status !== prev.commented_status) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.commented_status !== prevProps.commented_status) {
       this.getComment();
+    }
+    if (prevState.updateCounter !== this.state.updateCounter) {
+      console.log(prevState.updateCounter);
+      console.log(this.state.updateCounter);
+
+      setTimeout(() => {
+        this.getRating()
+      }, 1000)
     }
   }
   render() {
@@ -196,6 +205,7 @@ class Rating extends Component {
                             .then((res) => {
                               this.setState({
                                 commented_status: false,
+                                updateCounter: 1
                               });
                             });
                         }}
@@ -238,6 +248,7 @@ class Rating extends Component {
                               .then(
                                 this.setState({
                                   commented_status: true,
+                                  updateCounter: 2
                                 })
                               );
                           }}
