@@ -6,12 +6,14 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/authActions'
 import { Link } from 'react-router-dom';
 import { backendURL } from '../../utils/integration'
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             propertyList: [],
-            loading: true
+          loading: true,
+          search: null
         }
     }
 
@@ -30,6 +32,10 @@ class Dashboard extends Component {
         this.props.logout();
         this.props.history.push('/');
     }
+  searchValue = (e) => {
+    let key = e.target.value;
+    this.setState({ search: key })
+  }
 
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -116,13 +122,22 @@ class Dashboard extends Component {
                   <span style={{ fontSize: "1.5em" }}>
                     Properties to explore
                   </span>
+
+                  <div className="search-box" style={{ marginTop: '1em' }}>
+                    <input type="text" placeholder="  Search" onChange={(e) => this.searchValue(e)} style={{ backgroundColor: '#FFD3DC', borderStyle: 'solid', borderRadius: '1em', borderColor: '#A81432', marginRight: '1em', paddingLeft: '1em', paddingRight: '1em' }} />
+                    <i className="fa fa-search" style={{ color: '#A81432' }} />
+                  </div>
                   {loading ? (
                     <div className="center-tag">
                       <span>Please wait while assets are being loaded...</span>
                     </div>
                   ) : (
                     <div className="grid" style={{ marginTop: "2em" }}>
-                      {propertyList.map((e) => (
+                        {propertyList.filter((data) => {
+                          if (this.state.search == null)
+                            return data
+                          else if (data.code.toLowerCase().includes(this.state.search.toLowerCase()) || data.name.toLowerCase().includes(this.state.search.toLowerCase())) return data
+                        }).map((e) => (
                         <Link
                           to={{
                             pathname: "/rating",
@@ -145,7 +160,7 @@ class Dashboard extends Component {
                           >
                             <CardBody>
                               <span className="text-white card-text">
-                                {e.code}
+                                  <b> {e.code}</b>
                               </span>
                               <br />
                               <span className="text-white card-text">
